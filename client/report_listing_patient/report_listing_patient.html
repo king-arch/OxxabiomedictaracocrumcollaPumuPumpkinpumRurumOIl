@@ -1,0 +1,105 @@
+
+
+<template name="report_listing_patient">
+	<head>     
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    </head>
+
+    <body>
+      {{> show_report_listing_patient}}
+    </body>
+
+</template>
+
+<template name="show_report_listing_patient">
+             <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+        <div class="page-content">
+                    <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimi
+                        ze"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    
+                </ul>
+                <div class="page-title">  
+                                <div class="page-content-wrap">                
+                
+                    <div class="row">
+                        <div class="col-md-12" id="full_container" >
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">Report listing</h3>
+
+<!--      <span id="add_patient_div" >
+            <button class="pull-right btn btn-primary btn-lg change_color_on_hover" id="add_patient" style="
+        margin-top: 8px; " >
+                        <i class="fa fa-plus"></i>
+                        <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
+            <span id="save_text"> Add patient </span></button>
+    </span> -->
+
+                       <div class="topnav" id="capture_search_event" >
+
+                    </div>
+
+                                </div>
+
+                                <div class="panel-body">
+                                    <table class="table datatable" id="show_patient">
+                                        <thead>
+                                            <tr>
+                                                <th>report creation date</th>
+                                                <th>Doctor's name</th>
+                                                <th>Patient's name</th>
+
+                                                <th>Modality</th>
+                                                <th>View Image</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+    {{#each Show_report_listing}}  
+                                    <tr style="{{#if Show_report_listing}} background-color: #F9F9F9{{/if}}" >
+                                                <td>{{report_generation_date}}</td>
+                                                <td>{{show_doctor_name}}</td>
+                                                <td>{{show_patient_name}}</td>
+
+                                                <td>{{selected_modality}}</td>
+                                                <td>
+                                                    <button  id="View_image" class="btn btn-danger" >View image</button>
+                                                </td>
+                                    </tr>
+    {{else}}
+            <p style="font-size:12px;">No data to display</p>
+    {{/each}}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>                                
+                    
+                </div>             
+        </div>
+        </div>
+
+<center>
+<div class="container" style="margin-left: 35%">
+
+   <ul class="pagination" id="capture_pagination_event" >
+    {{#each show_pagination_count}}
+        <li><span id={{index}} class="cliked_on_pagination" >{{index}}</span></li>
+    {{/each}}
+  </ul>
+
+</div>        
+</center>
+
+</template>

@@ -1,0 +1,35 @@
+
+
+<template name="settings">
+	<head>         
+    </head>
+
+    <body>
+      {{> settings_list}}
+    </body>
+
+</template>
+
+<template name="settings_list">
+          <p> <i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+              <span class="sr-only">Loading...</span>  
+              <span class="settings_font">Settings</span>
+          </p>
+          
+            <div class="row">
+                
+                <button class="col-sm-12 setting_options option_setting" id="change_password" >Change Password</button>
+                
+           
+    {{#if display_if_admin}}                
+                <button class="col-sm-12 setting_options option_setting" id="change_privacy" >Change Privacy policy</button>
+                
+                <button class="col-sm-12 setting_options option_setting" id="change_useragreement" >Change User Agreement</button>
+           
+                <button class="col-sm-12 setting_options option_setting" id="change_cookies" >Change Cookies policy</button>
+                <button class="col-sm-12 setting_options option_setting" id="modality_list" >add Modality</button>
+
+    {{/if}}
+                
+            </div>
+</template>

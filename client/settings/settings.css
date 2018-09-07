@@ -1,0 +1,24 @@
+ 
+.settings_font{
+    font-size: 25px;
+    color: #2d615e;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+
+.setting_options{
+  
+    background: transparent;
+    text-align: center;
+    font-size: 16px;
+    border-bottom: 1px solid #48af9a;
+    border-top: 0;
+    border-left: 0px;
+    border-right: 0px;
+    cursor: pointer;
+    padding: 20px !important;
+
+}
+.option_setting{
+	
+}

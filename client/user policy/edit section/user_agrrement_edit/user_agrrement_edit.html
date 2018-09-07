@@ -1,0 +1,73 @@
+
+
+<template name="user_agreement_edit">
+    <head>     
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>                              
+    </head>
+<body>
+<h1>Edit User Agreement</h1>
+
+  <div class="page_all_white">
+   <div class="row">
+    <form >
+      <div class="row">
+        <div class="input-field col-md-12">
+           <p class="heading_create_inside"> Description </p>
+          <textarea id="edit_privacy" class="materialize-textarea frmt_inpt text_beauty" ></textarea>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <script type="text/javascript">
+  // $('#edit_blog_description').trumbowyg();
+    var trumbowyg = $('#edit_privacy').trumbowyg(
+ {
+  btnsDef: {
+    
+    },
+    btns: [
+        ['strong', 'em', 'del'],
+        ['superscript', 'subscript'],
+        //['link'],
+        // ['insertImage'],
+         ['justifyLeft', 'justifyCenter', 'justifyRight', 'justifyFull'],
+        [ 'orderedList'],
+        ['horizontalRule'],
+        ['removeformat'],
+        // ['fullscreen']
+    ],
+  });
+
+
+</script>
+ <!-- 
+<script type="text/javascript">       
+  $("#edit_blog_visibility").dropdown("set selected","");
+</script> -->
+ 
+
+ <div class="row">
+    <div class="col s12 m6 l4"> &nbsp;  </div>
+
+    <div class="col s12 m6 l3 pull-right">
+         <a class="save_button btns_save" id="save_edit_privacy" > Save</a>
+    </div>
+    
+    <div class="col s12 m6 l2 text-right">
+          <a class="clicked_cancel cncl_btm btns_cncl" id="cancelBack" >Cancel</a> 
+    </div>
+  </div>
+
+  <div class="loading loader_visiblity_block btns"  id="loading_div" ></div>
+
+</div>
+    </body>
+
+</template>

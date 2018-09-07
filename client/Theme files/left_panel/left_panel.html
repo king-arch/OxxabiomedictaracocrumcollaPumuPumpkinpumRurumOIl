@@ -1,0 +1,155 @@
+
+<template name="left_panel"> 
+     <div class="page-container">
+<div class="page-sidebar">
+                <ul class="x-navigation">
+                    <li class="xn-logo">
+                        <a href="index.html">Bio medical</a>
+                        <a href="#" class="x-navigation-control"></a>
+                    </li>
+                    <li class="xn-profile">
+
+                    <button class="pull-right" style="padding:3px; background: black;" id="go_to_edit_profile" ><i id="load_passion" class="fa fa-pencil fa-2x" style="color:white;"></i>
+                    <i class="fa fa-spinner fa-pulse fa-fw fa-2x div_hide_class" id="loader_gif" style="color:white;"></i>
+                    </button>
+
+                        <a href="#" class="profile-mini">
+                            <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                        </a>
+                    {{#each display_logged_in_user_info}}
+                      {{#if display_if_admin}}
+
+                        <div class="profile">
+                            <div class="profile-image">
+                                <img src="assets/images/users/avatar.jpg" alt="John Doe"/>
+                            </div>
+                            <div class="profile-data">
+                                <div class="profile-data-name">{{admin_name}}</div>
+                                <div class="profile-data-title">Bio Medic Admin</div>
+                            </div>
+                        </div>
+
+                        {{else}}
+                        {{#if display_if_patient}}
+
+                            <div class="profile">
+                                <div class="profile-image">
+                                    <img src="images/profile_default/patient2.png" alt="Patient"/>
+                                </div>
+                                <div class="profile-data">
+                                    <div class="profile-data-name">{{patient_name}}</div>
+                                    <div class="profile-data-title">Bio Medic Patient</div>
+                                </div>
+                            </div>
+                        {{else}}
+                        {{#if display_if_doctor}}
+                            <div class="profile">
+                                <div class="profile-image">
+                                    <img src="images/profile_default/doctor.jpg" alt="John Doe"/>
+                                </div>
+                                <div class="profile-data">
+                                    <div class="profile-data-name">{{doctor_name}}</div>
+                                    <div class="profile-data-title">Bio Medic Doctor</div>
+                                </div>
+                            </div>
+                        {{/if}} 
+                        {{/if}}   
+                        {{/if}}
+                                                                    
+                    {{/each}}
+                    </li>
+                    <li class="xn-title">Navigation</li>     
+        {{#if check_logged_in_user}}            
+                    <li>
+                        <a class="pointer" id="create_report"><i class="fa fa-upload"></i> <span class="xn-text">Update Image</span></a>
+                    </li>
+
+                    <li>
+                        <a class="pointer" id="report_listing"><span class="fa fa-desktop"></span> <span class="xn-text">Report listing</span></a>
+                    </li>
+
+                    <li>
+                        <a class="pointer" id="dashboard"><i class="fa fa-user-md"></i> <span class="xn-text">Doctor's listing</span></a>
+                    </li>  
+                    <li>
+                        <a class="pointer" id="dashboard2"><i class="fa fa-user"></i> Patient's listing</a>
+                    </li> 
+        {{else}}
+
+                {{#if display_if_doctor}}
+                            <li>
+                        <a class="pointer" id="create_report"><i class="fa fa-upload"></i> <span class="xn-text">Update Image</span></a>
+
+                                            <li>
+                        <a class="pointer" id="report_listing"><span class="fa fa-desktop"></span> <span class="xn-text">Report listing</span></a>
+                    </li>
+                    </li>
+
+
+
+                            {{else}}
+
+        
+                                            <li>
+                        <a class="pointer" id="report_listing"><span class="fa fa-desktop"></span> <span class="xn-text">Report listing</span></a>
+                    </li>
+                    {{/if}}
+
+
+<!--                     <li>
+                        <a class="pointer" id="dashboard"><span class="fa fa-desktop"></span> <span class="xn-text">Display report</span></a>
+                    </li> -->
+        {{/if}}
+                   <li>
+                        <a class="pointer" id="settings" ><i class="fa fa-cog fa-spin fa-3x fa-fw"></i>
+                        <span class="sr-only">Loading...</span> 
+                        <span class="xn-text">Settings</span></a>
+                    </li>
+                   <li>
+                        <a class="pointer" id="logout" ><span class="fa fa-power-off fa-lg"></span> <span class="xn-text">Logout</span></a>
+                    </li>
+
+                    <li class="xn-openable" style="display:none" >
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
+                        <ul>
+                            <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
+                            <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
+                            <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
+                                <ul>
+                                    <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
+                                    <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
+                                </ul>
+                            </li>
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
+                                <ul>                                    
+                                    <li><a href="pages-login.html">App Login</a></li>
+                                    <li><a href="pages-login-website.html">Website Login</a></li>
+                                    <li><a href="pages-login-website-light.html"> Website Login Light</a></li>
+                                </ul>
+                            </li>                            
+                            <li class="xn-openable">
+                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
+                                <ul>                                    
+                                    <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
+                                    <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
+                                    <li><a href="pages-error-500.html"> Error 500</a></li>
+                                </ul>
+                            </li>                            
+                        </ul>
+                    </li>
+                    <li class="xn-openable" style="display:none" >
+                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Record</span></a>
+                        <ul>
+                            <li><a class="pointer" id="create_record">Create a Record</a></li>
+
+                        </ul>
+                    </li>             
+                                      
+                </ul>
+            </div>
+            {{> yield}}
+        </div>
+</template>

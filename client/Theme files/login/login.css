@@ -1,0 +1,19 @@
+
+
+.div_hide_class{
+	display: none !important;
+}
+
+
+.align_left{
+    
+    padding-left: 0 !important;
+    text-align: left !important;
+    padding-right: 0px !important;
+}
+
+
+
+ .text-white{
+	color:#fff !important;
+}

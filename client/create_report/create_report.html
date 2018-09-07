@@ -1,0 +1,160 @@
+
+
+<template name="create_report">
+	<head>     
+
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    </head>
+
+  {{> add_report_form}}
+</template>
+
+<template name="add_report_form">
+    <body>
+            <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+            <div class="page-content">
+                <div class="page-title">                    
+
+                </div>
+                <div class="page-content-wrap">                
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title"><strong>Upload Image</strong></h3>
+                                  <ul class="panel-controls" >
+                                    <li><a href="JavaScript:Void(0)" class="" id="go_back_doctor_listing" ><span class="fa fa-times"></span></a></li>
+                                  </ul>
+                                </div>
+
+                                <div class="panel-body form-group-separated">
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Select Doctor</label>
+                                        <div class="col-md-6 col-xs-12">           
+                                            <select class="form-control select" id="selected_doctor" >
+                                                <option value="" >--Select Type--</option>
+                                                {{#each doctors_listing}}
+                                                    <option value="{{doctors_id}}" >{{doctor_name}} -({{Speciality}})</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Select Patient</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+
+                                            <select class="form-control select" id="selected_patient">
+                                                <option value="" >--Select Type--</option>
+                                            {{#each patient_listing}}
+                                                <option value="{{patient_id}}" >{{patient_name}}</option>
+                                            {{/each}}
+                                            </select>
+
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Select Modality</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+
+                                            <select class="form-control select" id="selected_modality">
+                                                <option value="" >--Select Type--</option>
+                                            {{#each modality_listing}}
+                                                <option value="{{modality_name}}" nreal="{{modality_name}}">{{modality_name}}</option>
+                                            {{/each}}
+                                            </select>
+
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Select DCM format image</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+
+                                                <input type="file" name="myImage" accept=".dcm" id="selected_image" />
+
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="panel-footer">
+                                    <button class="btn btn-primary pull-left" id="clear_form_data">Clear Form</button>
+
+                <span >
+                    <button class="btn btn-primary pull-right" id="submit_report_form" >
+                    <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
+                    <span id="save_text"> Save </span></button>
+                </span>
+
+                                   
+                                </div>
+                            </form>
+                            </div>
+                            
+                        </div>
+                    </div>                                
+                    
+                </div>  
+
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="javascript:void(0)" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+    </body>
+
+  <script type="text/javascript">
+
+ function onlyAlphabets() {
+
+  var regex = /^[a-zA-Z]*$/;
+  if (regex.test(document.f.nm.value)) {
+      return true;
+  } else {
+      document.getElementById("notification").innerHTML = "Alphabets Only";
+      return false;
+  }
+}
+
+     function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+  </script>
+</template>

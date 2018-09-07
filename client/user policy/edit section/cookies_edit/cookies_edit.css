@@ -1,0 +1,35 @@
+
+
+.btns_save{
+      border: 1px solid black !important;
+    padding: 6px !important;
+    font-size: 20px !important;
+    color: white !important;
+    background: #48af9a !important;
+    text-decoration: none !important;
+}
+
+.btns_cncl{
+      border: 1px solid black !important;
+    padding: 6px !important;
+    font-size: 20px !important;
+    color: white !important;
+    background: #171515 !important;
+    text-decoration: none !important;
+}
+
+
+.text_beauty{
+margin-bottom: 20px !important;
+padding: 0px !important;
+border: 0px !important;
+font-variant-numeric: inherit !important; 
+font-variant-east-asian: inherit !important;
+font-stretch: inherit !important;
+line-height: inherit !important;
+font-family: noe-text-website !important;
+vertical-align: baseline !important;
+quotes: none; color: rgb(1, 1, 1) !important;
+list-style: none !important;
+background: rgb(255, 255, 255) !important;
+}

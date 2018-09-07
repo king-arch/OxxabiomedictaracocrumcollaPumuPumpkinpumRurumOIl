@@ -1,0 +1,188 @@
+
+
+<template name="patient_listing">
+	<head>     
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+
+    </head>
+
+<body>
+  {{> show_patient_listing}}
+</body>
+</template>
+
+<template name="show_patient_listing">
+            <!-- PAGE CONTENT -->
+             <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+        <div class="page-content">
+                    <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+                    <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimi
+                        ze"><span class="fa fa-dedent"></span></a>
+                    </li>
+                    
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                     
+                
+                <!-- START BREADCRUMB -->
+                <!-- <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>                    
+                    <li><a href="#">Tables</a></li>
+                    <li class="active">Data Tables</li>
+                </ul> -->
+                <!-- END BREADCRUMB -->
+
+                <!-- PAGE TITLE -->
+                <div class="page-title">  
+                                <div class="page-content-wrap">                
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+
+                            <!-- START DEFAULT DATATABLE -->
+                            <div class="panel panel-default">
+
+                                <div class="panel-heading">                                
+                                    <h3 class="panel-title">List of Patients</h3>
+
+     <span id="add_patient_div" >
+            <button class="pull-right btn btn-primary btn-lg change_color_on_hover" id="add_patient" style="
+        margin-top: 8px; " >
+                        <i class="fa fa-plus"></i>
+                        <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
+            <span id="save_text"> Add patient </span></button>
+    </span>
+
+                                    <!-- <ul class="panel-controls">
+
+                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+
+                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+
+                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+
+                                    </ul>  -->       
+
+                       <div class="topnav" id="capture_search_event" >
+                      <div class="search-container" >
+                        
+                          <input type="text" placeholder="Search.." name="search" id="search" autocomplete="off" >
+                          <button type="submit" id="search_btn" class="search_btn" ><i class="fa fa-search" ></i></button>
+                        
+                      </div>
+                    </div>
+
+                                </div>
+
+                                <div class="panel-body">
+                                    <table class="table datatable" id="show_patient">
+                                        <thead>
+
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Contact Number</th>
+
+                                          <!--       <th>Hospital's name</th>
+                                                <th>Speciality</th> -->
+
+                                                <th>Date of birth</th>
+                                                <th>Joining Date</th>
+                                                <th style="width:160px !important;">Actions</th>
+                                               
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+
+    {{#each show_patient_list}}  
+                                            <tr  style="{{#if check_patient_status patient_status}} background-color: #F9F9F9{{/if}}" >
+
+                                                <td>{{patient_name}}</td>
+                                                <td>{{email}}</td>
+                                                <td>{{Phone}}</td>
+                                                
+                                              <!--   <td>{{hospital_name}}</td>
+                                                <td>{{Speciality}}</td> -->
+
+                                                <td>{{dob}}</td>
+                                                <td>{{registration_date}}</td>
+
+                                                <td>
+                                                    <span class="edit_patient btn btn-info" id={{patient_id}}><i class="fa fa-pencil"  ></i></span>
+                                                
+                                                <!-- <td>{{patient_status}}</td> -->
+
+                                                
+<!--                                                     <button class="remove_doctor" id={{doctor_id}}>
+                                                        Deactivate
+                                                    </button> -->
+                                                    {{#if check_patient_status patient_status}}
+
+                        <button  id="{{patient_id}}" class="deactivate_status_patient btn btn-danger" value="Activate">  
+                                                        Deactivate
+                                                        </button> 
+
+                                                    {{else}}
+
+                        <button  id="{{patient_id}}" class="activate_status_patient btn  btn-success" value="Deactivate"  >
+                                                        Activate
+                                                        </button> 
+                                                    {{/if}}
+
+                                                </td>
+                                            </tr>
+    {{else}}
+            <p style="font-size:12px;">No data to display</p>
+    {{/each}}
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- END DEFAULT DATATABLE -->
+
+                            <!-- START SIMPLE DATATABLE -->
+                            
+                            <!-- END SIMPLE DATATABLE -->
+
+                        </div>
+                    </div>                                
+                    
+                </div>             
+        </div>
+        </div>
+
+<center>
+<div class="container" style="margin-left: 35%">
+
+<!--   <ul class="pagination">
+    <li><a href="1">1</a></li>
+    <li><a href="2">2</a></li>
+    <li><a href="3">3</a></li>
+    <li><a href="4">4</a></li>
+    <li><a href="5">5</a></li>
+  </ul> -->
+
+   <ul class="pagination" id="capture_pagination_event" >
+    {{#each show_pagination_count}}
+        <li><span id={{index}} class="cliked_on_pagination" >{{index}}</span></li>
+    {{/each}}
+    <!-- <li><span id="2" class="cliked_on_pagination" >2</span></li>
+    <li><span id="3" class="cliked_on_pagination" >3</span></li>
+    <li><span id="4" class="cliked_on_pagination" >4</span></li>
+    <li><span id="5" class="cliked_on_pagination" >5</span></li> -->
+  </ul>
+
+</div>        
+</center>
+
+</template>

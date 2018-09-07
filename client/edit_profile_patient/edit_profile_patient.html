@@ -1,0 +1,321 @@
+
+
+<template name="edit_profile_patient">
+	<head>     
+<!-- 	    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js" ></script>  -->
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+    <script type="text/javascript">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    </script>                                      
+    </head> 
+<body>
+  {{> edit_profile_patient_form}}
+</body>
+
+</template>
+
+<template name="edit_profile_patient_form">
+    <body>
+             <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+             
+            <div class="page-content">
+                
+               <!-- START X-NAVIGATION VERTICAL -->
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                    <!-- TOGGLE NAVIGATION -->
+<!--                     <li class="xn-icon-button">
+                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                    </li> -->
+                
+                </ul>
+                <!-- END X-NAVIGATION VERTICAL -->                     
+                
+                <!-- START BREADCRUMB -->
+                <!-- <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>                    
+                    <li><a href="#">Tables</a></li>
+                    <li class="active">Data Tables</li>
+                </ul> -->
+                <!-- END BREADCRUMB -->
+
+                <!-- PAGE TITLE -->
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Edit Patient's Details</h2>
+                </div>
+                <!-- END PAGE TITLE -->                
+
+                <!-- PAGE CONTENT WRAPPER -->
+                <div class="page-content-wrap">                
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <!-- <h3 class="panel-title"><strong>Separated</strong> Layout</h3> -->
+                                    <ul class="panel-controls">
+                                        <li><a href="JavaScript:Void(0)" class="" id="go_back_patient_listing" ><span class="fa fa-times"></span></a></li>
+                                    </ul>
+                                </div>
+                             <!--    <div class="panel-body">
+                                    <p>Add class <code>.form-group-separated</code> to form wrapper to get rows separated</p>
+                                </div> -->
+
+                                <div class="panel-body form-group-separated">
+                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"  >First Name</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                               <!--  <span class="input-group-addon"><span class="fa fa-pencil"></span></span> -->
+                                                <input type="text" class="form-control" placeholder="First Name" id="first_name" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label"  >Last Name</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                               <!--  <span class="input-group-addon"><span class="fa fa-pencil"></span></span> -->
+                                                <input type="text" class="form-control" placeholder="Last Name"  id="last_name" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">
+                                        Email</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                                <input type="email" class="form-control"
+                                                name="email"  placeholder="Email"  id="email" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Contact Number</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                                <input type="text" class="form-control" placeholder="Contact Number" id="Phone" onkeypress="return isNumberKey(event)" maxlength="16" minlength="4" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+
+
+                                <div class="form-group">                                       
+                                    <label class="col-md-3 col-xs-12 control-label">Date of birth</label>
+                                        <div class="col-md-6 col-xs-12">
+                                        <table>
+                                              <tr>
+                                                <th>Date</th>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                    <select class="form-control select" id="dob_joining_date">
+                                                        <option value="" >--Select Type--</option>
+                                                        {{#each show_dates}}
+                                                            <option value={{index}} >{{index}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control select" id="dob_joining_month">
+                                                      <option value="" >--Select Type--</option>
+                                                      <option value="Jan">Jan</option>
+                                                      <option value="Feb">Feb</option>
+                                                      <option value="Mar">Mar</option>
+                                                      <option value="Apr">Apr</option>
+                                                      <option value="May">May</option>
+                                                      <option value="Jun">Jun</option>
+                                                      <option value="Jul">Jul</option>
+                                                      <option value="Aug">Aug</option>
+                                                      <option value="Sep">Sep</option>
+                                                      <option value="Oct">Oct</option>
+                                                      <option value="Nov">Nov</option>
+                                                      <option value="Dec">Dec</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+
+                                        <input type="text" class="form-control" placeholder="Year" id="dob_joining_year" maxlength="4" onkeypress="return isNumberKey(event)" /> </td>
+                                              </tr>
+                                        </table> 
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">                                       
+                                    <label class="col-md-3 col-xs-12 control-label">Registration Date</label>
+                                        <div class="col-md-6 col-xs-12">
+                                        <table>
+                                              <tr>
+                                                <th>Date</th>
+                                                <th>Month</th>
+                                                <th>Year</th>
+                                              </tr>
+                                              <tr>
+                                                <td>
+                                                    <select class="form-control select" id="registration_joining_date">
+                                                        <option value="" >--Select Type--</option>
+                                                        {{#each show_dates}}
+                                                            <option value={{index}} >{{index}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </td>
+                                                <td>
+                                                    <select class="form-control select" id="registration_joining_month">
+                                                      <option value="" >--Select Type--</option>
+                                                      <option value="Jan">Jan</option>
+                                                      <option value="Feb">Feb</option>
+                                                      <option value="Mar">Mar</option>
+                                                      <option value="Apr">Apr</option>
+                                                      <option value="May">May</option>
+                                                      <option value="Jun">Jun</option>
+                                                      <option value="Jul">Jul</option>
+                                                      <option value="Aug">Aug</option>
+                                                      <option value="Sep">Sep</option>
+                                                      <option value="Oct">Oct</option>
+                                                      <option value="Nov">Nov</option>
+                                                      <option value="Dec">Dec</option>
+                                                    </select>
+                                                </td>
+                                                <td>
+
+                                        <input type="text" class="form-control" placeholder="Year" id="registration_joining_year" maxlength="4" onkeypress="return isNumberKey(event)" /> </td>
+                                              </tr>
+                                        </table> 
+                                        </div>
+                                    </div>
+
+
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Location </label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div >
+                                                <!-- <span class="input-group-addon"><span class="fa fa-pencil"></span></span> -->
+                                        <input type="text" class="form-control" placeholder="Location" id="location" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+            <input type="hidden" class="form-control"  id="patient_id_hidden" />
+
+                                </div>
+
+                                <div class="panel-footer">
+
+
+                <span >
+                    <button class="btn btn-primary pull-right" id="edit_patient_details" >
+                    <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
+                    <span id="save_text"> Update </span></button>
+                </span>
+
+                                    
+                                </div>
+                            </div>
+                            </form>
+                            
+                        </div>
+                    </div>                                
+                    
+                </div>
+                <!-- PAGE CONTENT WRAPPER -->                                
+            </div>    
+            <!-- END PAGE CONTENT -->
+        <!-- END PAGE CONTAINER -->       
+        
+        <!-- MESSAGE BOX-->
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="javascript:void(0)" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END MESSAGE BOX-->
+
+        <!-- START PRELOADS -->
+        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+        <!-- END PRELOADS -->                       
+        
+    <!-- START SCRIPTS -->
+        <!-- START PLUGINS -->
+       <!--  <script type="text/javascript" src="/js/plugins/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/plugins/jquery/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/js/plugins/bootstrap/bootstrap.min.js"></script>    -->     
+        <!-- END PLUGINS -->                
+
+        <!-- THIS PAGE PLUGINS -->
+        <!-- <script type='text/javascript' src='/js/plugins/icheck/icheck.min.js'></script> -->
+        <!-- <script type="text/javascript" src="/js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script> -->
+        
+          
+        <!-- END PAGE PLUGINS -->
+
+        <!-- START TEMPLATE -->
+        <!-- <script type="text/javascript" src="/js/settings.js"></script> -->
+        
+        <!-- <script type="text/javascript" src="/js/plugins.js"></script>         -->
+        <!-- <script type="text/javascript" src="/js/actions.js"></script>         -->
+        <!-- END TEMPLATE -->
+    <!-- END SCRIPTS --> 
+        
+    </body>
+
+
+
+ <!--   <script type="text/javascript">
+      $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 200, // Creates a dropdown of 15 years to control year,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false, // Close upon selecting a date,
+           min: new Date(1900,1,1),
+    max: true  // `true` sets it to today. `false` removes any limits.
+      });
+      
+   </script> -->
+
+
+<!--             <script src="https://maps.googleapis.com/maps/api/place/autocomplete/xml?input=Amoeba&types=establishment&location=37.76999,-122.44696&radius=500&strictbounds&key=AIzaSyCvejvFLKA0VoIj2RqnJJ_BaTww7x0mZjc" >
+            </script> -->
+
+  <script type="text/javascript">
+  //   $(document).ready(function(){
+  //   $('ul.tabs').tabs();
+  // });
+     function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+  </script>
+</template>

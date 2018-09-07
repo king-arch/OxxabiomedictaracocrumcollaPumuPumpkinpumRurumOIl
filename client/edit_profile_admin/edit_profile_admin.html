@@ -1,0 +1,123 @@
+
+
+<template name="edit_profile_admin">
+	<head>     
+        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        
+    <script type="text/javascript">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
+        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+    </script>                                      
+    </head> 
+<body>
+  {{> edit_profile_admin_form}}
+</body>
+
+</template>
+
+<template name="edit_profile_admin_form">
+    <body>
+             <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+             
+            <div class="page-content">
+            
+                <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+                </ul>
+                <div class="page-title">                    
+                    <h2><span class="fa fa-arrow-circle-o-left"></span> Edit Admin's Details</h2>
+                </div>
+
+                <div class="page-content-wrap">                
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                            <form class="form-horizontal">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <ul class="panel-controls">
+                                        <li><a href="JavaScript:Void(0)" class="" id="go_back_patient_listing" ><span class="fa fa-times"></span></a></li>
+                                    </ul>
+                                </div>
+
+                                <div class="panel-body form-group-separated">
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">
+                                        Email</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                                <input type="email" class="form-control"
+                                                name="email"  placeholder="Email"  id="email" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">
+                                        Name</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="">
+                                                <input type="text" class="form-control"
+                                                name="admin_name"  placeholder="Name"  id="admin_name" />
+                                            </div>                                            
+                                        </div>
+                                    </div>
+            <input type="hidden" class="form-control" id="patient_id_hidden" />
+                                </div>
+
+                                <div class="panel-footer">
+
+
+                <span >
+                    <button class="btn btn-primary pull-right" id="edit_patient_details" >
+                    <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
+                    <span id="save_text"> Update </span></button>
+                </span>
+
+                                    
+                                </div>
+                            </div>
+                            </form>
+                            
+                        </div>
+                    </div>                                
+                    
+                </div>                             
+            </div>    
+        <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+            <div class="mb-container">
+                <div class="mb-middle">
+                    <div class="mb-title"><span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?</div>
+                    <div class="mb-content">
+                        <p>Are you sure you want to log out?</p>                    
+                        <p>Press No if youwant to continue work. Press Yes to logout current user.</p>
+                    </div>
+                    <div class="mb-footer">
+                        <div class="pull-right">
+                            <a href="javascript:void(0)" class="btn btn-success btn-lg">Yes</a>
+                            <button class="btn btn-default btn-lg mb-control-close">No</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+        <audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+        
+    </body>
+
+  <script type="text/javascript">
+     function isNumberKey(evt)
+      {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+
+         return true;
+      }
+  </script>
+</template>
