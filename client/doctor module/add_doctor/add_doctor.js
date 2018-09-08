@@ -5,13 +5,6 @@ import { Base64 } from 'meteor/ostrio:base64';
 import { Session } from 'meteor/session';
 
 import swal from 'sweetalert';
-import { datepicker } from './bootstrap-datepicker.js';
-// import { doctor_details } from './../../../import/collections/insert.js';
-     
-
-// Meteor.startup(function() {  
-//       GoogleMaps.load();
-//     });
 
  Template.add_doctor_form.onRendered(function(){
  	
@@ -20,25 +13,11 @@ import { datepicker } from './bootstrap-datepicker.js';
 
 
   $.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css",function(){
-    // swal('loaded');
-    // $('#Joining_date').Datepicker();
-
   });
-  
-	// $.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.jshttps://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js",function(){
- // 		swal('loaded');
- // 		$('#Joining_date').datepicker();
- // 	});
-
- 	// $.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css",function(){
- 	// 	swal('loaded');
- 	// 	$('#Joining_date').Datepicker();
- 	// });
 
 $.getScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAGXF3qowdglMakLrlj2wCmgdI_OtsUWaI', function(){
     $.getScript('https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js', function(){
-     	// swal("Loaded");
-      $("#location").geocomplete()
+      $("#location").geocomplete();
    });
    });
 
@@ -46,7 +25,6 @@ $.getScript('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.
 });
 
 setTimeout(function(){
-	 	// $('#Joining_date').datepicker();
 	 	$('#loading_div').addClass('loader_visiblity_block');
 },3000);
 

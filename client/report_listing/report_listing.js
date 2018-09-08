@@ -232,13 +232,13 @@ var pagination = Session.get("pagination");
             var modality_filter = Session.get('modality_filter');
           if(modality_filter){
 
-       swal('case 3');
-       swal(modality_filter);
+       // swal('case 3');
+       // swal(modality_filter);
             get_report_listing = Meteor.subscribe('get_report_listing');
            var result = report.find({ selected_modality: modality_filter } ).fetch();
 
           }else{
- swal('case 4');
+ // swal('case 4');
               get_report_listing = Meteor.subscribe('get_report_listing');
               var result = report.find({}).fetch();
             }
@@ -360,10 +360,14 @@ function click_events(){
         });
 
         $("#filter_with_modality").change(function(event){
-            swal('here we are');
+            // swal('here we are');
             var filter_with_modality = $('#filter_with_modality').val();
-            swal(filter_with_modality);
+            // swal(filter_with_modality);
             Session.set('modality_filter',filter_with_modality);
+        });
+
+        $("#upload_image").click(function(event){
+            Router.go("create_report");
         });
 
         $("#capture_search_event").on("keyup", "#search", function(event){

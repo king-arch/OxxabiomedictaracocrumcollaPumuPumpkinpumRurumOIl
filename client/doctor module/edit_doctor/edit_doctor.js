@@ -3,16 +3,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Base64 } from 'meteor/ostrio:base64';
 import { Session } from 'meteor/session';
-
 import swal from 'sweetalert';
-import { datepicker } from './bootstrap-datepicker.js';
-
-// import { doctor_details } from './../../../import/collections/insert.js';
-     
-
-// Meteor.startup(function() {  
-//       GoogleMaps.load();
-//     });
 
  Template.edit_doctor_form.helpers({
     show_dates(){
@@ -32,44 +23,20 @@ import { datepicker } from './bootstrap-datepicker.js';
   $('#loading_div').removeClass('loader_visiblity_block');
  	click_events();
 
- 	// 	$('#loading_div').removeClass('loader_visiblity_block');
-
- 	// 	setTimeout(function(){
-	 // 		$('#loading_div').addClass('loader_visiblity_block');
-		// },3000);
-
-		// 	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.jshttps://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js",function(){
- 	// 	// swal('loaded');
- 	// 	$('#Joining_date').datepicker();
- 	// });
-
- 	$.getScript("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css",function(){
- 		// swal('loaded');
- 		// $('#Joining_date').Datepicker();
-
- 	});
-
-
 $.getScript('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js', function(){
 });
 
  	$.getScript('https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAGXF3qowdglMakLrlj2wCmgdI_OtsUWaI', function(){
     $.getScript('https://cdnjs.cloudflare.com/ajax/libs/geocomplete/1.7.0/jquery.geocomplete.min.js', function(){
-     	// swal("Loaded");
       $("#location").geocomplete()
    });
    });
 
- 		 // var logged_in_User =  Session.get("userId");
         var url = window.location.href;
-
         var new_url = url.split("/");
         url = new_url[new_url.length-1];
 
-        var doctor_id = Base64.decode(url); 
-
-        // console.log('doctor id: ');
-        // console.log(doctor_id);
+      var doctor_id = Base64.decode(url); 
 
  	    Meteor.call('fetch_doctor_details',doctor_id,function(error,result){
               if(error){
@@ -99,7 +66,6 @@ $.getScript('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.
                 var day = day_and_month[1].trim();
                 var month = day_and_month[0].trim();
 
-				          // var Joining_date = $('#Joining_date').val(result[0].Joining_date);
                   var Joining_date = $('#Joining_date').val(day);
                   var Joining_month = $('#Joining_month').val(month);
                   var Joining_year = $('#Joining_year').val(year); 
@@ -113,32 +79,12 @@ $.getScript('https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.
 
 
  	  setTimeout(function(){
-// $('#Joining_date').datepicker();
-      // $("#location").geocomplete({ details: "form" });
           $('#loading_div').addClass('loader_visiblity_block');
   },3000)
 
 });
 
-//  Template.edit_doctor_form.helpers({
-
-//  });
-
-
-// Template.edit_doctor_form.events({
-// 'click #edit_save_group': function(event){
-// 		swal("here");
-// 	  Router.go('/addDoctor');
-// },
-
-    
-
-
-// });
-
-
 function click_events(){
-
 		$('#first_name').keydown(function (e) {
           if (e.shiftKey || e.ctrlKey || e.altKey) {
               e.preventDefault();
@@ -163,29 +109,24 @@ function click_events(){
 
 	$("#go_back_doctor_listing").click(function(event){
         event.preventDefault();
-        // swal('here');
-
         window.history.go(-1);
     });
 
 	$("#edit_doctor_details").click(function(event){
         event.preventDefault();
-        // swal("here");
+        var first_name = $('#first_name').val().trim();
+        var last_name = $('#last_name').val().trim();
+        var email = $('#email').val().trim();
+        var Speciality = $('#Speciality').val().trim();
 
-        var first_name = $('#first_name').val();
-        var last_name = $('#last_name').val();
-        var email = $('#email').val();
-        var Speciality = $('#Speciality').val();
-
-        var Phone = $('#Phone').val();
-        var hospital_name = $('#hospital_name').val();
+        var Phone = $('#Phone').val().trim();
+        var hospital_name = $('#hospital_name').val().trim();
 
         var Joining_date = $('#Joining_date').val().trim();
         var Joining_month = $('#Joining_month').val().trim();
         var Joining_year = $('#Joining_year').val().trim();
 
-        var location = $('#location').val();
-
+        var location = $('#location').val().trim();
 
         	  if(first_name == '' || first_name == undefined ){
 				$('#first_name').addClass('empty_field').focus();
@@ -221,9 +162,7 @@ function click_events(){
 				else{
 					$('#email').removeClass('empty_field').blur();
 				}
-
 			  }			  
-
 
         if(Speciality == '' || Speciality == undefined ){
 				$('#Speciality').addClass('empty_field').focus();
@@ -285,7 +224,6 @@ function click_events(){
 
         var mydate=new Date();
         var str=moment(mydate).format('YYYY');
-        // alert(str);
         if(Joining_year > str){
           alert(' Last used year value cannot be greater then the current year');
           $('#Joining_year').addClass('emptyfield').focus();

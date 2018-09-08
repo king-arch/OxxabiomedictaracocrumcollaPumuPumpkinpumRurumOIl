@@ -35,20 +35,20 @@
                             <div class="panel panel-default">
 
                                 <div class="panel-heading">                                
-                                    <h3 class="panel-title">Report listing</h3>
+                                    <h3 class="panel-title">View Report</h3>
 
      <span id="add_patient_div" >
             <button class="pull-right btn btn-primary btn-lg change_color_on_hover" id="add_patient" style="
         margin-top: 8px; " >
                         <i class="fa fa-plus"></i>
                         <i class="fa fa-spinner fa-pulse fa-fw div_hide_class" id="loader_gif"></i>
-            <span id="save_text"> Add patient </span></button>
+            <span id="upload_image"> Upload Image </span></button>
     </span>
 
                        <div class="topnav" id="capture_search_event" >
                         <div class="search-container" >
                                             <select class="form-control select" id="filter_with_modality">
-                                                <option value="" >--No filter--</option>
+                                                <option value="" >--Select filter--</option>
                                             {{#each modality_listing}}
                                                 <option value="{{modality_name}}" nreal="{{modality_name}}">{{modality_name}}</option>
                                             {{/each}}
@@ -56,7 +56,7 @@
                                             </div>
                       <div class="search-container" >
                         
-                          <input type="text" placeholder="Search.." name="search" id="search" autocomplete="off" >
+                          <input type="text" placeholder="Search by Patient name or Doctor name" name="search" id="search" autocomplete="off" >
                           <button type="submit" id="search_btn" class="search_btn" ><i class="fa fa-search" ></i></button>
                         
                       </div>

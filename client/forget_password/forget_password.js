@@ -35,8 +35,21 @@ click_events();
 		event.preventDefault();
 		var email_addr=$("#email").val();
 		if(email_addr==''){
-			 $("#email_addr").addClass('empty_field');
+			 $("#email").addClass('empty_field').focus();
+			 return false;
 		}else{
+			$("#email").removeClass('empty_field').blur();
+
+				var email_validation = ValidateEmail(email);
+
+				if(email_validation == false){
+					$('#email').addClass('empty_field').focus();
+					return false;
+				}
+				else{
+					$('#email').removeClass('empty_field').blur();
+				}
+			  }	
 
 		$("#email_addr").removeClass('empty_field');
 		// alert(email_addr);
@@ -51,17 +64,58 @@ click_events();
     					$('#save_text').removeClass('div_hide_class');
 
 		        if(error){
-		          alert("Some error occured");
+		          // swal("Some error occured");
+		              swal({
+						  // title: "Good job!",
+						  text: 'Some error occured!',
+						  // icon: "success",
+						  button: "ok",
+						  icon: "warning",
+						  dangerMode: true,
+						});
 		        }else{
-					alert(result.msg);
+
+					    swal({
+						  // title: "Good job!",
+						  text: result.msg,
+						  icon: "warning",
+						  button: "ok",
+						  // icon: "success",
+						  dangerMode: true,
+						});
+
+
 					console.log(result);
 					// alert("We have sent a password reset email to your registered email address.");
 				}
 		    });
 
 		$("#email").val("");
-	}
-
 	});
 
+}
+
+
+
+function ValidateEmail(mail) 
+{
+
+	var email = $('#email').val();
+
+ if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))
+  {
+    return (true)
+  }
+
+    // swal("You have entered an invalid email address!");
+    swal({
+				  // title: "Good job!",
+				  text: 'You have entered an invalid email address!',
+				  // icon: "success",
+				  button: "ok",
+				  icon: "warning",
+				  dangerMode: true,
+				});
+
+    return (false)
 }

@@ -172,7 +172,7 @@ function click_events(){
                       }  
              }); 
 
-             alert('check 4');
+             // alert('check 4');
                  $("#go_back_doctor_listing").click(function(event){
                       event.preventDefault();
                         window.history.go(-1);

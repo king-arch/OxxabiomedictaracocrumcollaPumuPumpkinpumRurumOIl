@@ -1,4 +1,5 @@
 
+
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Session } from 'meteor/session';
@@ -75,9 +76,33 @@ click_events();
               $('#save_text').removeClass('div_hide_class');
 
 		if(error){
-			swal('some Error occured');
+			// swal('some Error occured');
+					    swal({
+						  // title: "Good job!",
+						  text: 'Some error occured!',
+						  // icon: "success",
+						  button: "ok",
+						  icon: "warning",
+						  dangerMode: true,
+						});
+
 		}else{
 			if(result){
+
+				if(result.status == 0){
+				// swal(result.msg);
+
+				    swal({
+						  // title: "Good job!",
+						  text: result.msg,
+						  // icon: "success",
+						  button: "ok",
+						  icon: "warning",
+						  dangerMode: true,
+						});
+
+			    }
+
 			    if(result.login_type == 'admin'){
 
 				Session.setPersistent("active_user",result.active_user);

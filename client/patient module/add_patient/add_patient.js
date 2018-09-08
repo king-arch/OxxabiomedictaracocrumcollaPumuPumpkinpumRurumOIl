@@ -29,7 +29,7 @@ setTimeout(function(){
  Template.add_patient_form.helpers({
     show_dates(){
       var array = new Array;
-      for(var i=0;i<30;i++){
+      for(var i=1;i<32;i++){
         array.push({'index': i});
       }
       console.log('here we are: ');
@@ -102,20 +102,20 @@ function click_events(){
         event.preventDefault();
         // swal("here");
 
-        var first_name = $('#first_name').val();
-        var last_name = $('#last_name').val();
-        var email = $('#email').val();
+        var first_name = $('#first_name').val().trim();
+        var last_name = $('#last_name').val().trim();
+        var email = $('#email').val().trim();
 
-        var Phone = $('#Phone').val();
+        var Phone = $('#Phone').val().trim();
 
-        var registration_joining_date = $('#registration_joining_date').val();
-        var registration_joining_month = $('#registration_joining_month').val();
-        var registration_joining_year = $('#registration_joining_year').val();
+        var registration_joining_date = $('#registration_joining_date').val().trim();
+        var registration_joining_month = $('#registration_joining_month').val().trim();
+        var registration_joining_year = $('#registration_joining_year').val().trim();
 
-        var dob_joining_date = $('#dob_joining_date').val();
-        var dob_joining_month = $('#dob_joining_month').val();
-        var dob_joining_year = $('#dob_joining_year').val();
-        var location = $('#location').val();
+        var dob_joining_date = $('#dob_joining_date').val().trim();
+        var dob_joining_month = $('#dob_joining_month').val().trim();
+        var dob_joining_year = $('#dob_joining_year').val().trim();
+        var location = $('#location').val().trim();
 
         if(first_name == '' || first_name == undefined ){
 				$('#first_name').addClass('empty_field').focus();
@@ -231,20 +231,20 @@ function click_events(){
 			  }
 
 
-        first_name = first_name.trim();
-        last_name = last_name.trim();
-        email = email.trim();
+        // first_name = first_name.trim();
+        // last_name = last_name.trim();
+        // email = email.trim();
 
-        Phone = Phone.trim();
+        // Phone = Phone.trim();
 
-        registration_joining_date = registration_joining_date.trim();
-        registration_joining_month = registration_joining_month.trim();
-        registration_joining_year = registration_joining_year.trim();
+        // registration_joining_date = registration_joining_date.trim();
+        // registration_joining_month = registration_joining_month.trim();
+        // registration_joining_year = registration_joining_year.trim();
 
-        dob_joining_date = dob_joining_date.trim();
-        dob_joining_month = dob_joining_month.trim();
-        dob_joining_year = dob_joining_year.trim();
-        location = location.trim();
+        // dob_joining_date = dob_joining_date.trim();
+        // dob_joining_month = dob_joining_month.trim();
+        // dob_joining_year = dob_joining_year.trim();
+        // location = location.trim();
 
         
 
@@ -253,7 +253,17 @@ function click_events(){
         var str = moment(mydate).format('YYYY');
  
         if(registration_joining_year > str){
-          alert(' Last used year value cannot be greater then the current year');
+
+
+                swal({
+              // title: "Good job!",
+              text: 'Year value cannot be greater then the current year',
+              // icon: "success",
+              button: "ok",
+              icon: "warning",
+              dangerMode: true,
+            });
+
           $('#registration_joining_year').addClass('emptyfield').focus();
           return false;
         }
@@ -286,11 +296,11 @@ function click_events(){
 
 		var patient_name = first_name +' '+last_name;
 
-        swal('patient_name: '+patient_name+
-        	+' & patient_id: '+patient_id+
-        	' & email: '+email+
-        	' & Phone: '+Phone+' & registration_date: '+registration_date
-        	+' & location: '+location);
+        // swal('patient_name: '+patient_name+
+        // 	+' & patient_id: '+patient_id+
+        // 	' & email: '+email+
+        // 	' & Phone: '+Phone+' & registration_date: '+registration_date
+        // 	+' & location: '+location);
 
         Meteor.call('Insert_patient_details',patient_id,patient_name,email,Phone,registration_date,dob,location,function(error,result){
               $('#loader_gif').addClass('div_hide_class');
@@ -305,7 +315,17 @@ console.log(result.msg);
                 if(result.msg == 'email already exist'){
                   $('#email').addClass('empty_field').focus();
                   
-                  swal('This email is already in use! Please use another one.');   
+                  // swal('This email is already in use! Please use another one.');   
+
+                  swal({
+              // title: "Good job!",
+              text: 'This email is already in use! Please use another one.',
+              // icon: "success",
+              button: "ok",
+              icon: "warning",
+              dangerMode: true,
+            });
+                  
                   return false;
 
 
@@ -313,11 +333,31 @@ console.log(result.msg);
                 else if(result.msg == 'Phone number already exist'){
                   $('#Phone').addClass('empty_field').focus();
                   
-                  swal('This Phone is already in use! Please use another one.');   
+                  // swal('This Phone is already in use! Please use another one.');   
+
+                  swal({
+              // title: "Good job!",
+              text: 'This Phone is already in use! Please use another one.',
+              // icon: "success",
+              button: "ok",
+              icon: "warning",
+              dangerMode: true,
+            });
+
                  
                 }
                 else if(result){
-              	swal("Patient details added successfully! ");
+              	// swal("Patient details added successfully! ");
+
+                swal({
+              // title: "Good job!",
+              text: 'Patient details added successfully! ',
+              icon: "success",
+              button: "ok",
+              // icon: "warning",
+              dangerMode: true,
+            });
+
               	window.history.go(-1);
                 }
 
@@ -340,7 +380,16 @@ function ValidateEmail(mail)
     return (true)
   }
 
-    swal("You have entered an invalid email address!");
+    // swal("Please enter a valid email ID");
+            swal({
+              // title: "Good job!",
+              text: 'Please enter a valid email ID',
+              // icon: "success",
+              button: "ok",
+              icon: "warning",
+              dangerMode: true,
+            });
+
     return (false)
 }
 

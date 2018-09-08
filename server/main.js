@@ -163,36 +163,36 @@ Meteor.methods({
     var result = admin_details.find({admin_email: email,admin_password: password}).fetch();
       console.log(result);
 
-      console.log('case 1');
+      // console.log('case 1');
     if(result[0]){
-      console.log('case 1.1');
+      // console.log('case 1.1');
       var message = {"msg": 'Welcome back',"status": "1","login_type": "admin","active_user": result[0].admin_id};
       console.log(message);
       return message;
     }
     else{
-      console.log('case 2');
-      var result2 = doctor_details.find({email: email,password: password}).fetch();
+      // console.log('case 2');
+      var result2 = doctor_details.find({email: email,password: password,doctor_status: { $ne: "Deactivate" } }).fetch();
       console.log(result2);
 
       if(result2[0]){
-        console.log('case 2.2');
+        // console.log('case 2.2');
         var message = {"msg": 'Welcome back',"status": "1","login_type": "doctor","active_user": result2[0].doctor_id};
         console.log(message);
         return message;
       }
       else{
-        console.log('case 3');
-          var result3 = patient_details.find({email: email,password: password}).fetch();
+        // console.log('case 3');
+          var result3 = patient_details.find({email: email,password: password,patient_status: { $ne: "Deactivate" }}).fetch();
           console.log(result3);
 
           if(result3[0]){
-            console.log('case 3.3');
+            // console.log('case 3.3');
             var message = {"msg": 'Welcome back',"status": "1","login_type": "patient","active_user": result3[0].patient_id};
             console.log(message);
             return message;
           }else{
-            console.log('case 4');
+            // console.log('case 4');
                     var message = {"msg": 'Wrong email or password',"status": "0"};
                     console.log(message);
                     return message;
@@ -497,7 +497,7 @@ console.log('email: '+email);
     console.log(message);
     return message;
     }else{
-      var message = {"msg": "Wrong Old password!","action_status": 0};
+      var message = {"msg": "Incorrect Old password","action_status": 0};
       console.log(message);
        return message;
     }
@@ -521,7 +521,7 @@ console.log('email: '+email);
     console.log(message);
     return message;
     }else{
-      var message = {"msg": "Wrong Old password!","action_status": 0};
+      var message = {"msg": "Incorrect Old password","action_status": 0};
       console.log(message);
        return message;
     }
@@ -546,7 +546,7 @@ console.log('email: '+email);
     console.log(message);
     return message;
     }else{
-      var message = {"msg": "Wrong Old password!","action_status": 0};
+      var message = {"msg": "Incorrect Old password","action_status": 0};
       console.log(message);
        return message;
    
@@ -615,7 +615,6 @@ console.log('email: '+email);
     },
 
     "Update_forget_password": function(new_password,user_id){
-
      var result4 = admin_details.find({admin_id: user_id}).fetch();
      if(result4[0]){
       console.log(result4[0]);
@@ -628,7 +627,7 @@ console.log('email: '+email);
         }
 
       });
-          var message = {"msg": "password successfully updated."};
+          var message = {"msg": "Password updated successfully."};
           console.log(message);
           return message;
 
@@ -643,7 +642,7 @@ console.log('email: '+email);
               updatedAt:  Date.now,
         }
       });
-          var message = {"msg": "password successfully updated."};
+          var message = {"msg": "Password updated successfully."};
           console.log(message);
           return message;
        }else{
@@ -657,7 +656,7 @@ console.log('email: '+email);
               updatedAt:  Date.now,
         }
       });
-          var message = {"msg": "password successfully updated."};
+          var message = {"msg": "Password updated successfully."};
           console.log(message);
           return message;
        }else{
@@ -933,17 +932,17 @@ function send_email_doctor(doctor_id,doctor_name,email,password){
             var email = email;
             var htmlCode="<html><head><title>Email</title></head><body><div style="+div_style+"><div style="+div_style2 +"><table style="+div_style3+"><tbody><tr><td><div style="+div_style4+"><table style="+div_style6+"><tbody><tr><td><div style="+div_style7+"><a> <img src="+image_url+" style="+style+"/></a></div></td><td><p style="+div_style10+"><p></td>"+
             "</tr></tbody></table></div><div style="+div_style11+"><table style ="+div_style12 +" cellspacing="+spacing+" cellpadding="+spacing+"><tbody><tr><td "+
-            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Down below are the credentail of your Biomedic account."+
-            "!</td></tr><tr><td colspan="+div_style11
+            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Welcome to Biomeds. Here are the credentail of your Biomeds account."+
+            "</td></tr><tr><td colspan="+div_style11
             +"><br/><p>Email: "+email+" </p></br><p>Password : "+password+"</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing
             +">P.S. This email was intended to reach "+ name +", if you are not "+name +",please ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
             +">&nbsp;</td></tr><tr><td colspan="+spacing+">Regards</td></tr><tr><td colspan="+spacing
-            +">The Biomedic Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+name+".<br/>Copyright Biomedic, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
+            +">The Biomeds Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+".<br/>Copyright Biomeds, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
 
              var email = {
                         to: email,
                         from: 'biomedicsteam@gmail.com',
-                        subject: "Biomedic | welcome to Biomedic",
+                        subject: "Biomeds | welcome to Biomeds",
                         html: htmlCode,
                     };
 
@@ -976,17 +975,17 @@ function send_email_patient(patient_name,email,password){
             var email = email;
             var htmlCode="<html><head><title>Email</title></head><body><div style="+div_style+"><div style="+div_style2 +"><table style="+div_style3+"><tbody><tr><td><div style="+div_style4+"><table style="+div_style6+"><tbody><tr><td><div style="+div_style7+"><a> <img src="+image_url+" style="+style+"/></a></div></td><td><p style="+div_style10+"><p></td>"+
             "</tr></tbody></table></div><div style="+div_style11+"><table style ="+div_style12 +" cellspacing="+spacing+" cellpadding="+spacing+"><tbody><tr><td "+
-            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Down below are the credentail of your Biomedic account."+
-            "!</td></tr><tr><td colspan="+div_style11
+            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Welcome to Biomeds. Here are the credentail of your Biomeds account."+
+            "</td></tr><tr><td colspan="+div_style11
             +"><br/><p>Email: "+email+" </p></br><p>Password : "+password+"</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing
-            +">P.S. This email was intended to reach "+ name +", if you are not "+name +",please ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
+            +">P.S. This email was intended to reach "+ name +", if you are not "+",please ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
             +">&nbsp;</td></tr><tr><td colspan="+spacing+">Regards</td></tr><tr><td colspan="+spacing
-            +">The Biomedic Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+name+".<br/>Copyright Biomedic, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
+            +">The Biomeds Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+".<br/>Copyright Biomeds, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
 
              var email = {
                         to: email,
                         from: 'biomedicsteam@gmail.com',
-                        subject: "Biomedic | welcome to Biomedic",
+                        subject: "Biomeds | welcome to Biomeds",
                         html: htmlCode,
                     };
 
@@ -1020,16 +1019,16 @@ function send_email_patient(patient_name,email,password){
             var email = email;
             var htmlCode="<html><head><title>Email</title></head><body><div style="+div_style+"><div style="+div_style2 +"><table style="+div_style3+"><tbody><tr><td><div style="+div_style4+"><table style="+div_style6+"><tbody><tr><td><div style="+div_style7+"><a> <img src="+image_url+" style="+style+"/></a></div></td><td><p style="+div_style10+"><p></td>"+
             "</tr></tbody></table></div><div style="+div_style11+"><table style ="+div_style12 +" cellspacing="+spacing+" cellpadding="+spacing+"><tbody><tr><td "+
-            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Down below are the credentail of your Biomedic account."+
-            "!</td></tr><tr><td colspan="+div_style11
+            "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Welcome to Biomeds. Here are the credentail of your Biomeds account."+
+            "</td></tr><tr><td colspan="+div_style11
             +"><br/><p>Email: "+email+" </p></br><p>Password : "+password+"</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing
             +">P.S. This email was intended to reach "+ name +", if you are not "+name +",please ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
             +">&nbsp;</td></tr><tr><td colspan="+spacing+">Regards</td></tr><tr><td colspan="+spacing
-            +">The Biomedic Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+name+".<br/>Copyright Biomedic, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
+            +">The Biomeds Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+".<br/>Copyright Biomeds, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
              var email = {
                         to: email,
                         from: 'biomedicsteam@gmail.com',
-                        subject: "Biomedic | welcome to Biomedic",
+                        subject: "Biomeds | welcome to Biomeds",
                         html: htmlCode,
                     };
                     Email.send(email);
@@ -1065,7 +1064,7 @@ function send_forget_password_mail(email){
           check_name = result3[0].doctor_name;
           check_userID = result3[0].doctor_id;
        }else{
-          var message = {"msg": "this eamil doesnt exist in our system.Please re-check"};
+          var message = {"msg": "The entered email id is not registered with us. Please check the email Id again."};
           console.log(message);
           return message;
        }
@@ -1101,15 +1100,15 @@ var htmlCode="<html><head><title>Email</title></head><body><div style="+div_styl
 "colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+" style="+div_style14+">Hi "+name +",</td></tr><tr><td colspan="+spacing+">Your request for Password reset has been processed successfully."+
 "</td></tr><tr><td colspan="+div_style11
 +"><br/><p>Please click on the link below to reset your password</p>"+
-"<a href=http://13.126.214.31/change_forgot_password/"+check_userID +" </a>Reset Password link</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing
-+">P.S. If you did not sign up for biomedic, just ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
+"<a href=http://pacs.space/change_forgot_password/"+check_userID +" </a>Reset Password </td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing
++">P.S. If you did not sign up for Biomeds, just ignore this email; we will never again send you an email.</td></tr><tr><td colspan="+spacing
 +">&nbsp;</td></tr><tr><td colspan="+spacing+">Regards</td></tr><tr><td colspan="+spacing
-+">The biomedic Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+name+".<br/>Copyright biomedic, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
++">The Biomeds Team</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr><tr><td colspan="+spacing+">&nbsp;</td></tr></tbody></table></div><div style="+div_style15+"><table style="+div_style6+"><tbody><tr><td><center><small style="+div_style6+">This email was intended for "+name+".<br/>Copyright Biomeds, 2018.</small></center></td></tr></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
 
           var email = {
                 to: userEmail,
                 from: 'biomedicsteam@gmail.com',
-                subject: "biomedic | Forgot Password",
+                subject: "Biomeds | Forgot Password",
                 html: htmlCode,
             };
             

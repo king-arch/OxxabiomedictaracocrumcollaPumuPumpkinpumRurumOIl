@@ -6,14 +6,7 @@ import { Session } from 'meteor/session';
 
 import swal from 'sweetalert';
 import { datepicker } from './bootstrap-datepicker.js';
-
 import { patient_details } from './../../../import/collections/insert.js';
-     
-
-// Meteor.startup(function() {  
-//       GoogleMaps.load();
-//     });
-
 
  Template.edit_patient_form.onRendered(function(){
   $('#loading_div').removeClass('loader_visiblity_block');
@@ -148,20 +141,20 @@ function click_events(){
   $("#edit_patient_details").click(function(event){
         event.preventDefault();
 
-        var first_name = $('#first_name').val();
-        var last_name = $('#last_name').val();
-        var email = $('#email').val();
+        var first_name = $('#first_name').val().trim();
+        var last_name = $('#last_name').val().trim();
+        var email = $('#email').val().trim();
 
-        var Phone = $('#Phone').val();
+        var Phone = $('#Phone').val().trim();
 
-        var registration_joining_date = $('#registration_joining_date').val();
-        var registration_joining_month = $('#registration_joining_month').val();
-        var registration_joining_year = $('#registration_joining_year').val();
+        var registration_joining_date = $('#registration_joining_date').val().trim();
+        var registration_joining_month = $('#registration_joining_month').val().trim();
+        var registration_joining_year = $('#registration_joining_year').val().trim();
 
-        var dob_joining_date = $('#dob_joining_date').val();
-        var dob_joining_month = $('#dob_joining_month').val();
-        var dob_joining_year = $('#dob_joining_year').val();
-        var location = $('#location').val();
+        var dob_joining_date = $('#dob_joining_date').val().trim();
+        var dob_joining_month = $('#dob_joining_month').val().trim();
+        var dob_joining_year = $('#dob_joining_year').val().trim();
+        var location = $('#location').val().trim();
 
 
             if(first_name == '' || first_name == undefined ){
@@ -282,20 +275,20 @@ function click_events(){
       $('#loader_gif').removeClass('div_hide_class');
         $('#save_text').addClass('div_hide_class');
 
-        first_name = first_name.trim();
-        last_name = last_name.trim();
-        email = email.trim();
+        // first_name = first_name.trim();
+        // last_name = last_name.trim();
+        // email = email.trim();
 
-        Phone = Phone.trim();
+        // Phone = Phone.trim();
 
-        registration_joining_date = registration_joining_date.trim();
-        registration_joining_month = registration_joining_month.trim();
-        registration_joining_year = registration_joining_year.trim();
+        // registration_joining_date = registration_joining_date.trim();
+        // registration_joining_month = registration_joining_month.trim();
+        // registration_joining_year = registration_joining_year.trim();
 
-        dob_joining_date = dob_joining_date.trim();
-        dob_joining_month = dob_joining_month.trim();
-        dob_joining_year = dob_joining_year.trim();
-        location = location.trim();
+        // dob_joining_date = dob_joining_date.trim();
+        // dob_joining_month = dob_joining_month.trim();
+        // dob_joining_year = dob_joining_year.trim();
+        // location = location.trim();
 
         
 

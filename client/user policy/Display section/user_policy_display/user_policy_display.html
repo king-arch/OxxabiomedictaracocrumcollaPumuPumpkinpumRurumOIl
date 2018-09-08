@@ -1,39 +1,29 @@
-
-
 <template name="user_policy_display">
-	<head>     
-        <title>Joli Admin - Responsive Bootstrap Admin Template</title>            
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        
-        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />       
-        <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>                     
-    </head>
-<body>
-            <div class="loading loader_visiblity_block"  id="loading_div" ></div>
-
-<div class="row" style="background-color: #fff">
-         <div class="col m12 l12 s12">
-
-            <div class="section profile-info">
-              <h3>Privacy policy
-                <span class="pointer" id="edit_privacy" style="font-size: 15px !important; margin-bottom: 10px !important; ">
-              </span>
-            </h3>
-              <div class="divider"></div>
-            </div>
-            
-            <span id="temp_data"></span>
-            <div id="no_privacy_added" class="row hidden_element_class" style="width: 100%; margin-bottom: 0px;">
-                <div class="col m12 s12 l12">
+   <head>
+      <title>Joli Admin - Responsive Bootstrap Admin Template</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+      <link rel="stylesheet" type="text/css" id="theme" href="css/theme-default.css"/>
+   </head>
+   <body>
+      <div class="loading loader_visiblity_block"  id="loading_div" ></div>
+      <div class="contaiter">
+        <div class="row" style="padding:50px 20px">
+          <div class="col m12 l12 s12">
+              <p class="section profile-info" id="temp_data">
+                  <span class="pointer" id="edit_privacy" ></span>
+              </p>
+             
+              <div id="no_privacy_added" class="row hidden_element_class" >
+                 <div class="col m12 s12 l12">
                     <p class="blank_boxes_data_small"  id="temp_data" ></p>
-                </div>
-            </div>
-
-          
-         </div>
-         
+                 </div>
+              </div>
+           </div>
+        </div>
       </div>
-    </body>
+      
+   </body>
 </template>

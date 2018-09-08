@@ -36,18 +36,20 @@ click_events();
 
 		if(new_password =='' || new_password == null){
 			 $("#new_password").addClass('empty_field').focus();
+			 return false;
 		}else{
 			$("#new_password").removeClass('empty_field').blur();
 		}
 
 		if(retype_password == "" || retype_password == null){
 			$("#retype_password").addClass('empty_field').focus();
+			return false;
 		}else{
 			$("#retype_password").removeClass('empty_field').blur();
 		}
 
 		if(new_password != retype_password){
-		    swal('new password and retyped password didnt matched !');
+		    swal('Password and Confirm password mismatch.');
 			$("#retype_password").addClass('empty_field').blur();
 			return false;
 		}
@@ -67,7 +69,17 @@ click_events();
 		        if(error){
 		          alert("Some error occured");
 		        }else{
-					alert(result.msg);
+					// alert(result.msg);
+		              swal({
+						  // title: "Good job!",
+						  text: result.msg,
+						  icon: "success",
+						  button: "ok",
+						  // icon: "warning",
+						  dangerMode: true,
+						});
+
+
 					console.log(result);
 
 					Router.go('/');
